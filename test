@@ -3,3 +3,25 @@
 int main(){
   printf("jerry");
 }
+
+//Im Putting an array here UWU
+
+    int s; //size
+
+    printf("Enter the size of the array:");
+    scanf("%d", &s);
+
+    int myArray[s]; //the array
+
+    // Inputing values into the array
+    for (int i = 1; i <= s; i++){
+        printf("\nInput the value to store");
+        scanf("%d", &myArray[i]);
+    }
+
+    for (int i = 1; i <= s; i++){
+        printf("\nmyArray[%d]: %d", i, myArray[i]);
+    }
+
+    return 0;
+}
