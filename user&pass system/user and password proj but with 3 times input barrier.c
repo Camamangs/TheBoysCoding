@@ -31,11 +31,11 @@ int main() {
     printf("Paswword: ");
     scanf("%s", &InputPass);
 
-    if (strlen(InputUser) < 3 || strlen(InputPass) < 3) {
+    if (strlen(InputUser) < 3 || strlen(InputPass) < 3) { //checks the input if less than 3
         printf("Please Input More than 3 characters\n");
         goto LogIn;
     }
-    else if (strlen(InputUser) > 20 || strlen(InputPass) > 20) {
+    else if (strlen(InputUser) > 20 || strlen(InputPass) > 20) { // checks the input if more than 20
         printf("Please Input Less than 20 characters\n");
         goto LogIn;
     }
