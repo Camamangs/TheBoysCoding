@@ -20,6 +20,13 @@ int main() {
     cout << "Password:";
     cin >> InputPass;
 
+    if (strlen(InputUser) > 20 || strlen(InputPass) > 20){
+        cout << "Please Input less than 20 characters" << endl;
+    }
+    else if (strlen(InputUser) < 3 || strlen(InputPass) < 3){
+        cout << "Please Input more than 3 characters" << endl;
+    }
+
     for (int i = 0 ; i < StoredData; i++) {
         cout << "Comparing with: " << StoredUser[i] << endl;
         
