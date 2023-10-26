@@ -1,3 +1,5 @@
+// this is a auto registering user and password system
+
 #include <iostream>
 #include <cstring>
 using namespace std;
