@@ -71,6 +71,9 @@ int main() {
                     goto LogIn;
                 }
             }
+            else{
+                cout << "Error Input use: Yes - [Y/y] and No - [N/n] only"
+            }
         }
     }
     cout << "\nSuccesfully LogIn!!!!" << endl;

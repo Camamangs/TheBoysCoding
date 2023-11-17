@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/cjeaw/OneDrive/Desktop/TheBoysCoding/TheBoysCoding",
-      "program": "c:/Users/cjeaw/OneDrive/Desktop/TheBoysCoding/TheBoysCoding/build/Debug/outDebug",
+      "cwd": "c:/Users/cjeaw/OneDrive/Desktop/ /Github/TheBoysCoding/TheBoysCoding",
+      "program": "c:/Users/cjeaw/OneDrive/Desktop/ /Github/TheBoysCoding/TheBoysCoding/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
