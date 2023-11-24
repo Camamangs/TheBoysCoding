@@ -1,0 +1,170 @@
+//slightly buggy TUI (text user interface)           < console folder >
+//ready for test runs
+//spreading this next time
+//put new code in separate test file with dates
+
+//#include 'console.h' (file in the works, no function used here)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <ctype.h>
+//                                                    < basic entry >
+#define max 21//length for folder name
+
+char tname[] = "FOLDER",filename[41],gname[max],fname[max];//name sorting
+int /*inputs*/filecounter,in1count=0,subop1;
+char in1;
+
+//int folder_name_count;
+//stores new line character ascii value
+/*void delstr(int a) {int loop_eraser=0;                   //specific text eraser (in progress)
+                    for (;loop_eraser<a;loop_eraser++){     //should take in specific xy before executed
+                            gotoxy(100,1);                  //needs to decriment y until certain value or until there are no more texts
+                    printf("\b\0");}
+                    return;}*/
+//void logs(){}                                            //keep track of actions
+//void blink() {}                                  //blinks specific texts (i already have a separate file in works)
+void op1_folder_name() {
+    char fname_arr[2][max];                        //array for folder names
+    int a=0;
+    system("cls");
+    naming_act_display();
+    folder_name();
+    gotoxy(60,2);
+    printf("\033[1;32mnew folder name -> ");
+    scanf("%20s", fname);
+
+
+    if (!strcmp(fname,"/1")){
+        in1count = 0;
+        goback();
+    }
+    else if (!strcmp(fname,"/2")){
+        goback();
+    }
+    //else if (!strcmp(fname,"/3"))
+    //else if (!strcmp(fname,"/4"))
+    else{in1count++;
+
+        system("cls");
+        base();
+    }
+}
+
+void folder_name(){
+    if (in1count == 0){
+        strcpy(gname, tname); 
+    }            //folder name structure
+    else {
+        strcpy(gname, fname);
+    }
+    printf("\033[0m==%s==", gname);
+    return;
+}
+
+void gotoxy(int x, int y) {
+    printf("\033[%d;%dH", y, x);
+}   //temp cursor position
+
+void console(const char *x){                                //console message shortcut(kay kapoy sig balik type ani)
+    printf("\033[1;33m[console]%s\033[0m",x);
+    return;
+}
+
+void base_act_display() {
+    gotoxy(60,1);                     //base options for action
+    printf("\033[0m[1.edit folder name] [2.back] [3.create file] [4.exit]\n");
+    return;
+}
+
+void naming_act_display(){
+    gotoxy(60,1);                               //action options while naming folder
+    printf("\033[0m['/1'.reset name] ['/2'.back] ['/3'.create file] ['/4'.exit]\n");
+}
+
+
+
+void action(){
+    gotoxy(60,2);
+    printf("\033[1;32m|action|>");                         //problem: receives text input as name after in1 is processed
+    in1=fgetc(stdin);
+
+    if (in1==0x0A){
+        base(); 
+    }                             //stops user from pressing enter
+    else if (in1 == '1') {
+       op1_folder_name();
+    }
+    else if (in1 == '2') {
+       goback();
+    }
+    else if (in1 == '3') {
+       file_system();
+    }
+    else if (in1 == '4') {
+        gotoxy(60,3);
+        console("closing program");
+        countdown(4);
+        exit(0);
+    }
+    else {
+        input_error();
+        base();
+    }
+}
+
+void file_system(){
+    system("cls");
+    gotoxy(60,1);
+    printf("['/1'.edit file name] ['/2'.back] ['/3'.open file] ['/4'.exit]\n");
+
+    if (in1 == 1){
+    printf("\n\033[1;32mfile name --> ");
+    scanf("%40s", filename);
+    }
+
+    filecounter++;
+    system("cls");
+    base();
+}
+
+void input_error(){                                       //invalid message (also flush the stdin/out)
+    gotoxy(60,2);
+    printf("\033[1;31mInvalid!\033[0m\n");
+        fflush(stdin);
+        fflush(stdout);
+        usleep(10000);
+        goback();
+}
+
+void goback(){
+    gotoxy(60,3);                               //back message
+    console("going back..");
+    countdown(3);
+    system("cls");
+    base();
+}
+
+
+void countdown(int x){
+    for (int count = x;count>-1;count--){
+        printf(" \033[1;31m%d\033[0m",count);
+        usleep(400000);
+        printf("\b\b\0");
+    }
+    return;
+}
+
+void base(){
+    base_act_display();
+    folder_name();
+    action();
+}
+
+
+int main(){
+    system("CLS");
+    base(); 
+    return 0;
+}
